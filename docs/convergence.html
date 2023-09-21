@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Risk-aware sailing value function">
+    <meta name="description" content="Risk-aware sailing examples">
     <meta name="author" content="MingYi Wang">
     <!--     <link rel="icon" href="../../../../favicon.ico"> -->
 
@@ -34,10 +34,10 @@
                         <a class="btn btn-outline-light navbar-btn" href="index.html">Home </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="btn btn-outline-light navbar-btn" href="examples.html">Examples &amp; Movies</a>
+                        <a class="btn btn-outline-light navbar-btn" href="examples.html">Examples &amp; Movies<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="btn btn-outline-light navbar-btn" href="convergence.html">Convergence Plots</a>
+                        <a class="btn btn-outline-light navbar-btn" href="#">Convergence Plots<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
             </div>
@@ -46,91 +46,65 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
+
         <section class="jumbotron text-left">
             <div class="container">
-                <h1 class="jumbotron-heading">"Forced-to-switch-initially" movies</h1>
+                <h1 class="jumbotron-heading">Error Plots Under Grid Refinement </h1>
                 <div class="container bg-light">
-                    <p> Here we show how we pick desirable initial configurations that would yield most difference between \( \alpha_* \) and \( \mu_* \).</p>
                     <p>
-                        The idea is simple: We've realized that \( \alpha_* \) is better if it can reduce the number of possible tack-switches. Therefore, we
-                        <ul>
-                            <li>
-                                Compute another value function (deonted \( \tilde{w} \) ) that encodes the best probability of reaching the target within deadline \(s\) under the following new constraint:
-                                <ul>
-                                    <li> Force an initial tack-switch at any (\(r,\theta,s\)) and then behave optimally </li>
-                                </ul>
-                            </li>
-                            <li>
-                                Compute the difference in switchgrid (denoted \( D_* \)) between \( \alpha_* \) and \( \mu_* \) at any \(s\). By "difference", we meant
-                                <ul>
-                                    <li> Risk-aware (RA) policy prescribes "switching" while the risk-neutral (RN) policy doesn't.  </li>
-                                    <li> RN policy prescribes "switching" while the RA policy doesn't.  </li>
-                                </ul>
-                            </li>
-                            <li>
-                                Compute \( w -\tilde{w} \) on \( D_* \) for all \( 0 \le s \le \bar{s} \)
-                            </li>
-                            <li>
-                                Find states where \( w -\tilde{w} \) is large on \( D_* \). (In most cases, we want RN prescribes "switching" while RA doesn't.)
-                            </li>
-
-                        </ul>
+                        Here, we present numerical evidence of the convergence of the value function under grid refinement. To estimate the error, we treat the numerical solution \(w^*(r,\theta,q,s)\)
+                        computed on a fine grid (\(N_r,N_{\theta})=(1601,1601)\) with \(\Delta s = 0.025\)) as the "ground truth". We then measure how much the numerical solution on coarser grids deviates from the ground truth.
                     </p>
                 </div>
             </div>
         </section>
 
-        <h2>Moives: </h2>
+        <h3> \(L_1\)-Error </h3>
+        <div class="container bg-light">
+            <ul>
+                <li>
+                    Let \(N_{\mathrm{tot}}\) denote the total number of points of the grid. We use the discrete \(l_1\)
+                    -error \(\frac{1}{N_{\mathrm{tot}}} \sum_{r,\theta,q,s}|w(r,\theta,q,s)−w^*(r,\theta,q,s)|\)
+                    as a function of the grid refinement.
+                </li>
+                <li>
+                    Here we provide the error plots for the starboard tack \(q = 1\) only. The error plots for the port tack \(q = 2\) are similar.
+                </li>
+                <li>
+                    In these plots, the <em>solid red line</em> is the \(l_1\)-error while the <em>dashed black line</em> is the slope-1 (linear convergence) reference line
+                    in the log-log space.
+                </li>
+            </ul>
+        </div>
+
         <div class="container bg-light">
             <p>
-                The follownig 4 movies all show contour plots (starboard tack ( \( q = 1 \) ) only) in the relative (\(r, \theta \))-space where within each frame:
-                <ul>
-                    <li> <strong>Left:</strong> The difference in Switchgrids between \( \alpha_* \) and \( \mu_* \) at a specific deadline \(s\) </li>
-                    <li> <strong>Right:</strong> The corresponding success reduction in probability if forced to switch initially (behaving optimally afterward) </li>
+                <strong>In all of the following figures, we plot the error as a function of \(\Delta s\) indicating the grid refinement. In fact, \(\Delta r\) and \(\Delta \theta\) both change proportionally to \(\Delta s\) in the refinement study.</strong>
 
-                </ul>
-                <div class="album py-5 bg-light">
+                <div class="album py-2 bg-light">
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                <div class="card mb-6 shadow-sm">
+                                <div class="card mt-6 shadow-sm">
                                     <div class="card-body">
-                                        <h6 class="card-text"> <ul>\( a = 0 \) and \( \sigma = 0.05 \) (\( 0 \le s \le 60 \)):</ul></h6>
-                                        <video width="450" height="350" controls>
-                                            <source src="movies/ForceToSwitch_a0_sig005.mp4" type="video/mp4">
-                                        </video>
+                                        <h6 class="card-text">For \(a=0\) and \(\sigma = 0.05\):</h6>
+                                        <img src="figures/L1_a0_s.png" class="card-img-top" alt="Image Alt Text">
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="card mb-6 shadow-sm">
                                     <div class="card-body">
-                                        <h6 class="card-text"><ul>\( a = 0.15 \) and \( \sigma = 0.05 \) (\( 0 \le s \le 50 \)):</ul></h6>
-                                        <video width="450" height="350" controls>
-                                            <source src="movies/ForceToSwitch_a015_sig005.mp4" type="video/mp4">
-                                        </video>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="card mb-6 shadow-sm">
-                                    <div class="card-body">
-                                        <h6 class="card-text"> <ul>\( a = 0.05 \) and \( \sigma = 0.05 \) (\( 0 \le s \le 50 \)):</ul></h6>
-                                        <video width="450" height="350" controls>
-                                            <source src="movies/ForceToSwitch_a005_sig005.mp4" type="video/mp4">
-                                        </video>
+                                        <h6 class="card-text">For \(a=0.05\) and \(\sigma = 0.05\):</h6>
+                                        <img src="figures/L1_a005_s.png" class="card-img-top" alt="Image Alt Text">
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="card mb-6 shadow-sm">
                                     <div class="card-body">
-                                        <h6 class="card-text"><ul>\( a = 0.05 \) and \( \sigma = 0.1 \) (\( 0 \le s \le 50 \)):</ul></h6>
-                                        <video width="450" height="350" controls>
-                                            <source src="movies/ForceToSwitch_a005_sig01.mp4" type="video/mp4">
-                                        </video>
+                                        <h6 class="card-text">For \(a=0.15\) and \(\sigma = 0.05\):</h6>
+                                        <img src="figures/L1_a015_s.png" class="card-img-top" alt="Image Alt Text">
                                     </div>
                                 </div>
                             </div>
@@ -139,14 +113,12 @@
                 </div>
             </p>
         </div>
-        <div class="container bg-light">
-            <p>
-                <a class="btn btn-secondary" href="examples.html" role="button">&laquo; Return to Examples &amp; Movies page</a>
-                <a class="btn btn-secondary" href="value_fn.html" role="button">Go to moives of policy/value function evolution &raquo;</a>
-                <a class="btn btn-secondary" href="sample-paths.html" role="button">Go to sample paths visualizations &raquo;</a>
-            </p>
-        </div>
+
+
+
+
     </main>
+
     <footer class="text-muted">
         <div class="container">
             <h6>Disclaimer</h6>
@@ -157,16 +129,16 @@
             <p"> The documents contained in these directories are included by the contributing authors as a means to ensure timely dissemination of scholarly and technical work on a non-commercial basis. Copyright and all rights therein are maintained by the authors or by other copyright holders, notwithstanding that they have offered their works here electronically. It is understood that all persons copying this information will adhere to the terms and constraints invoked by each author's copyright. These works may not be reposted without the explicit permission of the copyright holder. </p>
         </div>
     </footer>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
     <!-- MathJax files -->
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]
-                        }});</script>
-                        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
