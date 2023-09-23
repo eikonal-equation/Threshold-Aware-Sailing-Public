@@ -53,7 +53,7 @@
                 <div class="container bg-light">
                     <p>
                         Here, we present numerical evidence of the convergence of the value function under grid refinement. To estimate the error, we treat the numerical solution \(w^*(r,\theta,q,s)\)
-                        computed on a fine grid (\(N_r,N_{\theta})=(1601,1601)\) with \(\Delta s = 0.025\)) as the "ground truth". We then measure how much the numerical solution on coarser grids deviates from the ground truth.
+                        computed on a fine grid \(\Big((N_r,N_{\theta})=(1601,1601)\) with \(\Delta s = 0.025 \Big)\) as the "ground truth". We then measure how much the numerical solution on coarser grids deviates from the ground truth.
                     </p>
                 </div>
             </div>
@@ -61,17 +61,20 @@
 
         <h3> \(L_1\)-Error </h3>
         <div class="container bg-light">
+            Let \(N_{\mathrm{tot}}\) denote the total number of points of the grid.
             <ul>
                 <li>
-                    Let \(N_{\mathrm{tot}}\) denote the total number of points of the grid. We use the discrete \(l_1\)
-                    -error \(\frac{1}{N_{\mathrm{tot}}} \sum_{r,\theta,q,s}|w(r,\theta,q,s)−w^*(r,\theta,q,s)|\)
+                    We show the discrete \(l_1\)-error \(\frac{1}{N_{\mathrm{tot}}} \sum_{r,\theta,s}|w(r,\theta,q,s)−w^*(r,\theta,q,s)|\) (for each tack \( q \in \{1,2\}\))
                     as a function of the grid refinement.
                 </li>
+            </ul>
+            <strong>In all of the following figures,</strong>
+            <ul>
                 <li>
-                    Here we provide the error plots for the starboard tack \(q = 1\) only. The error plots for the port tack \(q = 2\) are similar.
+                    We plot the error as a function of \(\Delta s\) indicating the grid refinement. In fact, \(\Delta r\) and \(\Delta \theta\) both change proportionally to \(\Delta s\) in the refinement study.
                 </li>
                 <li>
-                    In these plots, the <em>solid red line</em> is the \(l_1\)-error while the <em>dashed black line</em> is the slope-1 (linear convergence) reference line
+                    The <em>solid red line</em> is the \(l_1\)-error while the <em>dashed black line</em> is the slope-1 (linear convergence) reference line
                     in the log-log space.
                 </li>
             </ul>
@@ -79,7 +82,7 @@
 
         <div class="container bg-light">
             <p>
-                <strong>In all of the following figures, we plot the error as a function of \(\Delta s\) indicating the grid refinement. In fact, \(\Delta r\) and \(\Delta \theta\) both change proportionally to \(\Delta s\) in the refinement study.</strong>
+                <strong>For the starboard tack \(q = 1\):</strong>
 
                 <div class="album py-2 bg-light">
                     <div class="container">
@@ -114,7 +117,42 @@
             </p>
         </div>
 
+        <div class="container bg-light">
+            <p>
+                <strong>For the port tack \(q = 2\):</strong>
 
+                <div class="album py-2 bg-light">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card mt-6 shadow-sm">
+                                    <div class="card-body">
+                                        <h6 class="card-text">For \(a=0\) and \(\sigma = 0.05\):</h6>
+                                        <img src="figures/L1_a0_s_q2.png" class="card-img-top" alt="Image Alt Text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card mb-6 shadow-sm">
+                                    <div class="card-body">
+                                        <h6 class="card-text">For \(a=0.05\) and \(\sigma = 0.05\):</h6>
+                                        <img src="figures/L1_a005_s_q2.png" class="card-img-top" alt="Image Alt Text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card mb-6 shadow-sm">
+                                    <div class="card-body">
+                                        <h6 class="card-text">For \(a=0.15\) and \(\sigma = 0.05\):</h6>
+                                        <img src="figures/L1_a015_s_q2.png" class="card-img-top" alt="Image Alt Text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </p>
+        </div>
 
 
     </main>
