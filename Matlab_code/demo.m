@@ -11,7 +11,7 @@
 %
 clear all;
 close all;
-%% Generating CDFs with the deterministic-optimal policy
+%% Generating CDFs with the risk-neutral policy
 %Specify the parameters
 DataFile_dir = ''
 sample_size = 1e3
@@ -22,7 +22,7 @@ choice = 'nearest'
 % Call our function to generate the CDF
 Xcost_stationary = Sailing_Risk_Neutral_CDF(DataFile_dir,sample_size,time_step,choice,r0_indx,t0_indx);
 
-%% Generating CDFs with threshold-aware policies
+%% Generating CDFs with risk(threshold)-aware policies
 % Using the same initial tumor configuration, the same policy determination
 % startegy, and the same sample size as above.
 %
