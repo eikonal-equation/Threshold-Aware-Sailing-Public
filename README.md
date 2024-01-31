@@ -21,7 +21,7 @@ number of tack-switches.
 The "Risk-aware stochastic control of a sailboat" manuscript can be found [here](https://arxiv.org/abs/2309.13436).
 
 # Contributions & Acknowledgements # 
-  * The problem statement, the specific stochastic cancer dynamics, and the numerical scheme were developed by MingYi Wang, Natasha Patnaik, Anne Somalwar, Jingyi Wu, and Alexander Vladimirsky.
+  * The problem statement and the numerical scheme were developed by MingYi Wang, Natasha Patnaik, Anne Somalwar, Jingyi Wu, and Alexander Vladimirsky.
   * The implementation was carried out by MingYi Wang, Natasha Patnaik, Anne Somalwar, and Jingyi Wu.
   * The manuscript was written by MingYi Wang, Natasha Patnaik, Anne Somalwar, Jingyi Wu, and Alexander Vladimirsky.
   * The authors acknowledge Cole Miles, Roberto Ferretti, and Adriano Festa for inspiring our work.
